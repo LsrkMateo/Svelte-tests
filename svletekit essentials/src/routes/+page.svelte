@@ -12,7 +12,7 @@
 			<a href="/" role="button" class="outline contrast" style="width: 100%;">Edit article </a>
 		</article>
 	</div>
-	<form action="" method="post">
+	<form action="?/createArticle" method="POST">
 		<h3>New article</h3>
 		<label for="title">title</label>
 		<input type="text" id="title" name="title" />
