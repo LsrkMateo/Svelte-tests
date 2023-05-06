@@ -5,7 +5,7 @@ const db = new PrismaClient();
 
 // Creamos un tipo Post que define la estructura del objeto que se recibe de la API
 type Post = {
-	title: string;
+	tilte: string;
 	body: string;
 };
 
@@ -22,7 +22,10 @@ async function getPosts() {
 }
 
 // Función que toma un string y retorna su versión slugificada
-function slugify(text: string) {
+function slugify(text: string | undefined | null): string {
+	if (!text) {
+		return '';
+	}
 	return text
 		.replace(/\s/g, '-')
 		.replace(/[^a-zA-Z0-9-]/g, '')
@@ -35,13 +38,13 @@ async function main() {
 	const posts = await getPosts();
 
 	// Insertamos los posts en la base de datos
-	for (const post of posts) {
+	for (const { tilte, body } of posts) {
 		await db.post.create({
 			// Mapeamos los campos de la estructura Post a los campos correspondientes en la base de datos
 			data: {
-				title: post.title,
-				content: post.body,
-				slug: slugify(post.title)
+				tilte: tilte,
+				content: body,
+				slug: slugify(tilte)
 			}
 		});
 	}
