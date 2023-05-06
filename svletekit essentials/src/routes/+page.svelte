@@ -15,7 +15,9 @@
 				<p>
 					{article.content}
 				</p>
-				<button class="outline secondary">Delete Article </button>
+				<form action="?/deleteArticle&id={article.id}" method="post">
+					<button type="submit" class="outline secondary">Delete Article </button>
+				</form>
 				<a href="/" role="button" class="outline contrast" style="width: 100%;">Edit article </a>
 			</article>
 		{/each}
