@@ -6,3 +6,6 @@ h1 {
 	line-height: 1;
 	text-transform: capitalize;
 }
+#titulo-inicial {
+	margin-top: 0;
+}
